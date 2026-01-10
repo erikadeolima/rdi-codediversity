@@ -1,0 +1,100 @@
+# ==============================================================================
+# .gitignore para projetos C#/.NET
+# ==============================================================================
+
+# --------------------------------------------------
+# Arquivos gerados pelo .NET
+# --------------------------------------------------
+## Ignore a pasta bin e obj (compilações)
+bin/
+obj/
+
+## Ignore arquivos de cache do .NET
+*.user
+*.userosscache
+*.suo
+
+## Ignore arquivos de build
+[Bb]uild/
+[bB]in/
+[Oo]bj/
+
+# --------------------------------------------------
+# Arquivos do Visual Studio / VS Code
+# --------------------------------------------------
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+## Ignore arquivos de settings do VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --------------------------------------------------
+# Arquivos de cache e temporários
+# --------------------------------------------------
+*.cache
+*.tmp
+*.temp
+*.log
+~*
+.#*
+*#
+
+# --------------------------------------------------
+# Arquivos de configuração local
+# --------------------------------------------------
+appsettings.local.json
+*.local.json
+
+# --------------------------------------------------
+# Arquivos de banco de dados (se houver)
+# --------------------------------------------------
+*.mdf
+*.ldf
+*.db
+
+# --------------------------------------------------
+# Arquivos de coverage/teste
+# --------------------------------------------------
+coverage/
+*.coverage
+coverage.opencover.xml
+
+# --------------------------------------------------
+# packages folder
+# --------------------------------------------------
+packages/
+packages.config
+
+# --------------------------------------------------
+# ReSharper
+# --------------------------------------------------
+_ReSharper*/
+*.ReSharper.user
+
+# --------------------------------------------------
+# NCrunch
+# --------------------------------------------------
+*.ncrunch*
+*.nupkg
+
+# --------------------------------------------------
+# StyleCop
+# --------------------------------------------------
+StyleCopReport.xml
+
+# --------------------------------------------------
+#Arquivos de texto
+# --------------------------------------------------
+*.txt
+!README.md
+!LICENSE
+
