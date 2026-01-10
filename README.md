@@ -33,11 +33,12 @@ Se aparecer uma versão (ex: `8.0.x`), está pronto para começar!
 ### Método 1: Usando o terminal (Recomendado)
 
 ```bash
-# Criar o projeto (substitua "NomeDoProjeto" e "pasta_do_projeto")
-dotnet new console -n NomeDoProjeto -o pasta_do_projeto
 
 # Entrar na pasta
 cd pasta_do_projeto
+
+# Criar o projeto (substitua "NomeDoProjeto")
+dotnet new console -n NomeDoProjeto
 
 # Rodar o projeto
 dotnet run
@@ -230,11 +231,11 @@ namespace NomeDoProjeto  // Organiza o código
 # 1. Verificar .NET
 dotnet --version
 
-# 2. Criar projeto
-dotnet new console -n MeuApp -o minha_pasta
-
-# 3. Entrar na pasta
+# 2. Entrar na pasta
 cd minha_pasta
+
+# 3. Criar projeto
+dotnet new console -n MeuApp
 
 # 4. Editar Program.cs com seu código
 
