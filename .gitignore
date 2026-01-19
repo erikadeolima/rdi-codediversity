@@ -73,6 +73,7 @@ coverage.opencover.xml
 # --------------------------------------------------
 packages/
 packages.config
+external_code/
 
 # --------------------------------------------------
 # ReSharper
