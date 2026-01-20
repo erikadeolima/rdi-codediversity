@@ -50,6 +50,18 @@ public class Livro
         estaEmprestado = false;
     }
 
+    public Livro(int id, string isbn, string titulo, string autor, int anoPublicacao, string editora, int numeroPaginas)
+    {
+        Id = id;
+        Isbn = isbn;
+        Titulo = titulo;
+        Autor = autor;
+        AnoPublicacao = anoPublicacao;
+        Editora = editora;
+        NumeroPaginas = numeroPaginas;
+        estaEmprestado = false;
+    }
+
     public bool Emprestar(string nomeUsuario)
     {
         if (estaEmprestado)

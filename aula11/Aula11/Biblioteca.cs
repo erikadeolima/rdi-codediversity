@@ -7,11 +7,16 @@ public class Biblioteca
 
     public Biblioteca()
     {
-        Livro aCabecaDoSanto = new Livro(1, "A Cabeça do Santo");
-        Livro it = new Livro(2, "IT: A Coisa");
-
-        CadastrarLivro(aCabecaDoSanto);
-        CadastrarLivro(it);
+        CadastrarLivro(new Livro(1, "9788535914849", "1984", "George Orwell", 2021, "Companhia das Letras", 416));
+    CadastrarLivro(new Livro(2, "9788535933659", "Torto Arado", "Itamar Vieira Junior", 2019, "Todavia", 264));
+    CadastrarLivro(new Livro(3, "9788501115164", "Quarto de Despejo", "Carolina Maria de Jesus", 2014, "Ática", 200));
+    CadastrarLivro(new Livro(4, "9788535910698", "A Hora da Estrela", "Clarice Lispector", 2017, "Rocco", 88));
+    CadastrarLivro(new Livro(5, "9788544001714", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 2023, "Antofágica", 448));
+    CadastrarLivro(new Livro(6, "9788595081536", "O Alquimista", "Paulo Coelho", 2017, "Paralela", 208));
+    CadastrarLivro(new Livro(7, "9788576865247", "A Psicologia Financeira", "Morgan Housel", 2021, "HarperCollins", 304));
+    CadastrarLivro(new Livro(8, "9786555355437", "Hábitos Atômicos", "James Clear", 2019, "Alta Life", 320));
+    CadastrarLivro(new Livro(9, "9788535925821", "O Sol é para Todos", "Harper Lee", 2015, "José Olympio", 350));
+    CadastrarLivro(new Livro(10, "9788532531384", "O Pequeno Príncipe", "Antoine de Saint-Exupéry", 2018, "HarperCollins", 96));
     }
 
     public void CadastrarLivro(Livro livro)
