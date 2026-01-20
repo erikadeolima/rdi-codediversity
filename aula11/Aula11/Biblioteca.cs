@@ -2,282 +2,71 @@ namespace Aula11;
 
 public class Biblioteca
 {
-    private Dictionary<string, Livro> livros;
-    private Dictionary<string, Pessoa> usuarios;
+    public List<Livro> Livros { get; set; } = new List<Livro>();
+    public List<Pessoa> Pessoa { get; set; } = new List<Pessoa>();
 
     public Biblioteca()
     {
-        livros = new Dictionary<string, Livro>();
-        usuarios = new Dictionary<string, Pessoa>();
+        Livro aCabecaDoSanto = new Livro(1, "A Cabeça do Santo");
+        Livro it = new Livro(2, "IT: A Coisa");
+
+        CadastrarLivro(aCabecaDoSanto);
+        CadastrarLivro(it);
     }
 
-    public int TotalLivros
+    public void CadastrarLivro(Livro livro)
     {
-        get { return livros.Count; }
+        Livros.Add(livro);
     }
 
-    public int TotalUsuarios
+    public void CadastrarUsuario(Pessoa usuario)
     {
-        get { return usuarios.Count; }
+        Pessoa.Add(usuario);
     }
 
-    public bool CadastrarLivro(Livro livro)
+    public void EmprestarLivros(Livro livro, Pessoa pessoa)
     {
-        if (livro == null || string.IsNullOrEmpty(livro.Isbn))
-        {
-            return false;
-        }
-
-        if (livros.ContainsKey(livro.Isbn))
-        {
-            return false;
-        }
-
-        livros[livro.Isbn] = livro;
-        return true;
-    }
-
-    public bool CadastrarLivro(string isbn, string titulo, string autor, int anoPublicacao, string editora, int numeroPaginas)
-    {
-        Livro novoLivro = new Livro(isbn, titulo, autor, anoPublicacao, editora, numeroPaginas);
-        return CadastrarLivro(novoLivro);
-    }
-
-    public bool CadastrarUsuario(Pessoa pessoa)
-    {
-        if (pessoa == null || string.IsNullOrEmpty(pessoa.Email))
-        {
-            return false;
-        }
-
-        if (usuarios.ContainsKey(pessoa.Email))
-        {
-            return false;
-        }
-
-        usuarios[pessoa.Email] = pessoa;
-        return true;
-    }
-
-    public bool CadastrarUsuario(string nome, string email)
-    {
-        Pessoa novaPessoa = new Pessoa(nome, email);
-        return CadastrarUsuario(novaPessoa);
-    }
-
-    public bool EmprestarLivro(string isbn, string emailUsuario)
-    {
-        if (!livros.ContainsKey(isbn))
-        {
-            return false;
-        }
-
-        if (!usuarios.ContainsKey(emailUsuario))
-        {
-            return false;
-        }
-
-        Livro livro = livros[isbn];
-        Pessoa pessoa = usuarios[emailUsuario];
-
-        return pessoa.PegarLivroEmprestado(livro);
-    }
-
-    public bool AtualizarUsuario(string email, string? novoNome = null, string? novoEmail = null)
-    {
-        if (!usuarios.ContainsKey(email))
-        {
-            return false;
-        }
-
-        Pessoa pessoa = usuarios[email];
-
-        if (!string.IsNullOrEmpty(novoNome))
-        {
-            pessoa.Nome = novoNome;
-        }
-
-        if (!string.IsNullOrEmpty(novoEmail) && novoEmail != email)
-        {
-            if (usuarios.ContainsKey(novoEmail))
-            {
-                return false;
-            }
-
-            usuarios.Remove(email);
-            pessoa.Email = novoEmail;
-            usuarios[novoEmail] = pessoa;
-        }
-
-        return true;
-    }
-
-    public bool AtualizarLivro(string isbn, string? novoTitulo = null, string? novoAutor = null, 
-                                int? novoAno = null, string? novaEditora = null, int? novoNumeroPaginas = null)
-    {
-        if (!livros.ContainsKey(isbn))
-        {
-            return false;
-        }
-
-        Livro livro = livros[isbn];
-
-        if (!string.IsNullOrEmpty(novoTitulo))
-        {
-            livro.Titulo = novoTitulo;
-        }
-
-        if (!string.IsNullOrEmpty(novoAutor))
-        {
-            livro.Autor = novoAutor;
-        }
-
-        if (novoAno.HasValue)
-        {
-            livro.AnoPublicacao = novoAno.Value;
-        }
-
-        if (!string.IsNullOrEmpty(novaEditora))
-        {
-            livro.Editora = novaEditora;
-        }
-
-        if (novoNumeroPaginas.HasValue)
-        {
-            livro.NumeroPaginas = novoNumeroPaginas.Value;
-        }
-
-        return true;
+        pessoa.PegarLivroEmprestado(livro);
     }
 
     public void ListarLivros()
     {
-        if (livros.Count == 0)
+        foreach (Livro livro in Livros)
         {
-            Console.WriteLine("Nenhum livro cadastrado na biblioteca.");
-            return;
-        }
-
-        Console.WriteLine($"=== Livros Cadastrados ({livros.Count}) ===");
-        int contador = 1;
-        foreach (var livro in livros.Values)
-        {
-            string status = livro.EstaDisponivel() ? "Disponível" : "Emprestado";
-            Console.WriteLine($"{contador}. {livro.ObterResumo()} - {status}");
-            contador++;
-        }
-        Console.WriteLine();
-    }
-
-    public void ListarLivrosDetalhado()
-    {
-        if (livros.Count == 0)
-        {
-            Console.WriteLine("Nenhum livro cadastrado na biblioteca.");
-            return;
-        }
-
-        Console.WriteLine($"=== Livros Cadastrados - Detalhado ({livros.Count}) ===");
-        int contador = 1;
-        foreach (var livro in livros.Values)
-        {
-            Console.WriteLine($"--- Livro {contador} ---");
-            Console.WriteLine(livro);
-            Console.WriteLine();
-            contador++;
+            Console.WriteLine($"ID: {livro.Id} - Título: {livro.Titulo} - Status: {livro.Status}");
         }
     }
 
-    public void ListarUsuarios()
+    public Livro? BuscarLivroPorId(int id)
     {
-        if (usuarios.Count == 0)
-        {
-            Console.WriteLine("Nenhum usuário cadastrado na biblioteca.");
-            return;
-        }
-
-        Console.WriteLine($"=== Usuários Cadastrados ({usuarios.Count}) ===");
-        int contador = 1;
-        foreach (var pessoa in usuarios.Values)
-        {
-            Console.WriteLine($"{contador}. {pessoa.Nome} ({pessoa.Email})");
-            Console.WriteLine($"   Livros emprestados: {pessoa.QuantidadeLivrosEmprestados}");
-            contador++;
-        }
-        Console.WriteLine();
+        return Livros.FirstOrDefault(l => l.Id == id);
     }
 
-    public List<Livro> BuscarLivros(string termoBusca)
+    public Pessoa? BuscarPessoaPorNome(string nome)
     {
-        List<Livro> resultados = new List<Livro>();
-
-        if (string.IsNullOrEmpty(termoBusca))
-        {
-            return resultados;
-        }
-
-        termoBusca = termoBusca.ToLower();
-
-        foreach (var livro in livros.Values)
-        {
-            bool encontrado = 
-                livro.Titulo.ToLower().Contains(termoBusca) ||
-                livro.Autor.ToLower().Contains(termoBusca) ||
-                livro.Isbn.Contains(termoBusca) ||
-                livro.Editora.ToLower().Contains(termoBusca);
-
-            if (encontrado)
-            {
-                resultados.Add(livro);
-            }
-        }
-
-        return resultados;
+        return Pessoa.FirstOrDefault(p => p.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
     }
 
-    public Livro? BuscarLivroPorIsbn(string isbn)
+    public List<Pessoa> BuscarPessoasPorTrecho(string trecho)
     {
-        if (livros.ContainsKey(isbn))
+        if (string.IsNullOrEmpty(trecho))
         {
-            return livros[isbn];
-        }
-        return null;
-    }
-
-    public Pessoa? BuscarUsuarioPorEmail(string email)
-    {
-        if (usuarios.ContainsKey(email))
-        {
-            return usuarios[email];
-        }
-        return null;
-    }
-
-    public List<Livro> BuscarLivrosDisponiveis()
-    {
-        return livros.Values.Where(l => l.EstaDisponivel()).ToList();
-    }
-
-    public List<Livro> BuscarLivrosEmprestados()
-    {
-        return livros.Values.Where(l => !l.EstaDisponivel()).ToList();
-    }
-
-    public void ExibirResultadosBusca(List<Livro> resultados, string termoBusca)
-    {
-        if (resultados.Count == 0)
-        {
-            Console.WriteLine($"Nenhum livro encontrado para: '{termoBusca}'");
-            return;
+            return new List<Pessoa>();
         }
 
-        Console.WriteLine($"=== Resultados da Busca: '{termoBusca}' ({resultados.Count} encontrado(s)) ===");
-        for (int i = 0; i < resultados.Count; i++)
+        return Pessoa.Where(p => p.Nome.Contains(trecho, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+    public void DevolverLivro(Livro livro, Pessoa pessoa)
+    {
+        if (livro.Devolver())
         {
-            var livro = resultados[i];
-            string status = livro.EstaDisponivel() ? "Disponível" : "Emprestado";
-            Console.WriteLine($"{i + 1}. {livro.ObterResumo()} - {status}");
+            pessoa.DevolverLivro(livro);
+            Console.WriteLine($"Livro '{livro.Titulo}' devolvido com sucesso!");
         }
-        Console.WriteLine();
+        else
+        {
+            Console.WriteLine("Erro ao devolver o livro.");
+        }
     }
 }

@@ -56,6 +56,11 @@ public class Pessoa
         return false;
     }
 
+    public void PegarLivro(Livro livro)
+    {
+        PegarLivroEmprestado(livro);
+    }
+
     public bool DevolverLivro(Livro livro)
     {
         if (livro == null)

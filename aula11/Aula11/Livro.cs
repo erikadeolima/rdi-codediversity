@@ -2,6 +2,7 @@ namespace Aula11;
 
 public class Livro
 {
+    public int Id { get; set; }
     public string Isbn { get; set; }
     public string Titulo { get; set; }
     public string Autor { get; set; }
@@ -12,8 +13,14 @@ public class Livro
     public string? emprestadoPara { get; private set; }
     public DateTime? DataEmprestimo { get; set; }
 
+    public string Status
+    {
+        get { return estaEmprestado ? "Emprestado" : "Disponível"; }
+    }
+
     public Livro()
     {
+        Id = 0;
         Isbn = string.Empty;
         Titulo = string.Empty;
         Autor = string.Empty;
@@ -21,8 +28,19 @@ public class Livro
         estaEmprestado = false;
     }
 
+    public Livro(int id, string titulo)
+    {
+        Id = id;
+        Titulo = titulo;
+        Isbn = string.Empty;
+        Autor = string.Empty;
+        Editora = string.Empty;
+        estaEmprestado = false;
+    }
+
     public Livro(string isbn, string titulo, string autor, int anoPublicacao, string editora, int numeroPaginas)
     {
+        Id = 0;
         Isbn = isbn;
         Titulo = titulo;
         Autor = autor;
