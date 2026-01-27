@@ -56,7 +56,7 @@ namespace Classes
       Console.Clear();
       Console.WriteLine("=== Cadastrar ===\n");
       string name = ReadString("Nome");
-      int age = LerInteiro("Age");
+      int age = ReadInteger("Age");
 
       if (age <= 0)
         return true;
@@ -111,7 +111,7 @@ namespace Classes
       return Console.ReadLine()?.Trim() ?? "";
     }
 
-    private static int LerInteiro(string field)
+    private static int ReadInteger(string field)
     {
       Console.Write($"{field}: ");
       return int.TryParse(Console.ReadLine(), out int value) ? value : 0;
