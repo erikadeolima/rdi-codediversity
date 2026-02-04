@@ -1,6 +1,6 @@
-# API de Contatos - PostgreSQL
+# API de Contatos - PostgreSQL com Entity Framework Core
 
-API minimal em .NET 8 com Swagger para gerenciar contatos.
+API minimal em .NET 8 usando **Entity Framework Core** com PostgreSQL.
 
 ## 🚀 Como Rodar
 
@@ -174,12 +174,48 @@ curl -X DELETE http://localhost:5264/contacts/1
 | 404    | Not Found - Recurso não encontrado                 |
 | 409    | Conflict - Violação de restrição (email duplicado) |
 
+## 🔧 Configuração do Banco de Dados
+
+Configure a conexão no arquivo `appsettings.json`:
+
+```json
+{
+  "ConnectionStrings": {
+    "Default": "Host=localhost;Database=test20;Username=postgres;Password=postgres"
+  }
+}
+```
+
 ## ⚠️ Observação
 
 Para usar os endpoints de criação, atualização e exclusão, é necessário:
 
 1. PostgreSQL rodando
 2. Banco de dados `test20` criado
-3. Tabela `Contacts` criada
+3. A tabela `Contacts` será criada automaticamente pelo EF Core
 
-O Swagger funcionará mesmo sem banco de dados, mas os endpoints que exigem DB retornarão erro.
+**Nota:** Esta versão usa **Entity Framework Core** (não ADO.NET manual). O EF Core gerencia a criação automática da tabela se ela não existir.
+
+## 📁 Estrutura do Projeto
+
+```
+AulaTeste20/
+├── Data/
+│   └── AppDbContext.cs    # DbContext do EF Core
+├── Models/
+│   └── Contact.cs         # Modelo de dados
+├── Contracts/
+│   ├── ContactCreateRequest.cs
+│   └── ContactUpdateRequest.cs
+├── Program.cs              # Endpoints da API
+├── appsettings.json        # Configurações
+└── README.md
+```
+
+## 🛠️ Tecnologias
+
+- .NET 8
+- Entity Framework Core 9.0
+- Npgsql.EntityFrameworkCore.PostgreSQL 9.0
+- Swagger / Swashbuckle
+- Minimal APIs
