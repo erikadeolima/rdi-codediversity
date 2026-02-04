@@ -1,0 +1,96 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-01-15T10:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v1.0",
+  "resources": [
+    {
+      "_id": "health",
+      "parentId": "folder-contacts-api",
+      "name": "Health Check",
+      "url": "http://localhost:5264/health",
+      "method": "GET",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "list-contacts",
+      "parentId": "folder-contacts-api",
+      "name": "Listar todos os contatos",
+      "url": "http://localhost:5264/contacts",
+      "method": "GET",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "get-contact",
+      "parentId": "folder-contacts-api",
+      "name": "Buscar contato por ID",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "GET",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "create-contact",
+      "parentId": "folder-contacts-api",
+      "name": "Criar contato",
+      "url": "http://localhost:5264/contacts",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@email.com\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "update-contact",
+      "parentId": "folder-contacts-api",
+      "name": "Atualizar contato",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Santos\",\n  \"email\": \"joao.santos@email.com\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "delete-contact",
+      "parentId": "folder-contacts-api",
+      "name": "Excluir contato",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "DELETE",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "type": "request"
+    },
+    {
+      "_id": "folder-contacts-api",
+      "parentId": null,
+      "name": "Contacts API",
+      "type": "request_group"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "contacts-api-collection",
+    "name": "Contacts API - PostgreSQL",
+    "description": "Coleção de testes para a API de Contatos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5264/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar todos os contatos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5264/contacts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar contato por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5264/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar contato",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@email.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5264/contacts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar contato",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"João Santos\",\n  \"email\": \"joao.santos@email.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5264/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Excluir contato",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5264/contacts/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5264",
+          "path": [
+            "contacts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

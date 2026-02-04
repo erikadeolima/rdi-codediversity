@@ -1,0 +1,57 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Contacts API",
+  "dateExported": "2024-01-15",
+  "version": "1.0",
+  "folders": [],
+  "requests": [
+    {
+      "name": "Health Check",
+      "url": "http://localhost:5264/health",
+      "method": "GET",
+      "headers": "",
+      "body": "",
+      "type": "http"
+    },
+    {
+      "name": "Listar todos os contatos",
+      "url": "http://localhost:5264/contacts",
+      "method": "GET",
+      "headers": "",
+      "body": "",
+      "type": "http"
+    },
+    {
+      "name": "Buscar contato por ID",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "GET",
+      "headers": "",
+      "body": "",
+      "type": "http"
+    },
+    {
+      "name": "Criar contato",
+      "url": "http://localhost:5264/contacts",
+      "method": "POST",
+      "headers": "Content-Type: application/json",
+      "body": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@email.com\"\n}",
+      "type": "http"
+    },
+    {
+      "name": "Atualizar contato",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "PUT",
+      "headers": "Content-Type: application/json",
+      "body": "{\n  \"name\": \"João Santos\",\n  \"email\": \"joao.santos@email.com\"\n}",
+      "type": "http"
+    },
+    {
+      "name": "Excluir contato",
+      "url": "http://localhost:5264/contacts/1",
+      "method": "DELETE",
+      "headers": "",
+      "body": "",
+      "type": "http"
+    }
+  ]
+}
